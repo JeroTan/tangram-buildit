@@ -1,11 +1,11 @@
 description = "Initialize the project environment and folder hierarchy based on the approved Design pillars and templated setup knowledge."
 
-prompt = """
+prompt = '''
 Initialize the project environment and generate the base file structure using a design-led, template-first approach.
 
 **Input**: Triggered by `/tangram:setup`. 
 
-**⚖️ Hierarchy of Truth**
+**Hierarchy of Truth**
 1. **The User Prompt**: Direct instructions in the current message take absolute precedence.
 2. **User Project Knowledge**: Templated setup rules and boilerplate standards found in `.gemini/knowledge/setup/**`.
 3. **Internal AI Knowledge**: General defaults (fallback only).
@@ -47,3 +47,21 @@ Initialize the project environment and generate the base file structure using a 
    Execute the file writes and folder creations.
 
 **Output On Success**
+
+> ## Project Setup Complete
+> 
+> **Template Applied:** <Name of Template from knowledge/setup/** or 'Custom'>
+> **Target Structure:** Aligned with design/structure.md + Setup Knowledge.
+> 
+> **Initialized Items:**
+> - Directory hierarchy (Streamlined via Templates)
+> - Standard Boilerplate (.gitignore, README, Configs)
+> - Dependency Skeletons & .env.example
+> 
+> **Next Action:** Your workspace is ready. You can now run `/tangram:plan` to start the first sprint.
+
+**Guardrails**
+- **Streamlining**: Use the knowledge in `setup/**` to skip repetitive decision-making and automate the "boring" parts of the folder creation.
+- **Traceability**: Always cite the specific template or knowledge file that influenced the project structure.
+- **Strict Loop**: Suggest -> Approve -> Write -> Confirm.
+'''

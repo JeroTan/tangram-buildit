@@ -1,6 +1,6 @@
 description = "Handle Git operations: initialize, branch, commit, and push changes to the remote repository."
 
-prompt = """
+prompt = '''
 You are the Tangram Build AI executing the `commit` command.
 Your goal is to safely checkpoint the codebase using Git, ensuring commit messages reflect the active feature workspace.
 

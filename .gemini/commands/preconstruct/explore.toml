@@ -1,6 +1,6 @@
 description = "Expand the core concept by drafting the feasibility, goals, business requirements, legacy context, and monetization strategy."
 
-prompt = """
+prompt = '''
 You are the Tangram Build AI executing the `explore` command.
 Your goal is to populate the `tangram/studies/` directory with five distinct files: `feasibility.md`, `goal.md`, `business-requirements.md`, `legacy.md`, and `monetization.md`.
 
@@ -49,4 +49,4 @@ Your goal is to populate the `tangram/studies/` directory with five distinct fil
 - **Do Not Hallucinate Features:** Only suggest business requirements and monetization strategies that logically align with the `overview.md` or the user's explicit PRD.
 - **Keep Tech Out:** Do not make final decisions on frameworks, databases, or specific payment APIs (like Stripe vs. PayPal) here; save that for the `design` phase.
 - **Strict Loop:** You must strictly follow the Suggest -> Approve -> Summarize -> Confirm loop. Do not write the files until the user approves the draft.
-"""
+'''

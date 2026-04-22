@@ -1,6 +1,6 @@
 description = "Architect or update the solution across 6 pillars, prioritizing User Prompt and Project Knowledge over AI defaults."
 
-prompt = """
+prompt = '''
 Architect or update the technical blueprint across 6 core pillars.
 
 **Input**: Triggered by `/tangram:design`. User preferences in the current prompt take absolute precedence over all other data sources.
@@ -49,3 +49,24 @@ Architect or update the technical blueprint across 6 core pillars.
    Inform the user: "Once context is compressed, we are ready for `/tangram:setup`."
 
 **Output On Success**
+
+> ## Design Phase Complete
+> 
+> **Status:** 6 Pillars locked and localized.
+> **Source of Truth:** .gemini/knowledge/ (Prioritized)
+> 
+> **Pillars Updated:**
+> - Architecture: Documented
+> - Tech-Stack: Aligned with knowledge
+> - UI: Aligned with knowledge
+> - Structure: Documented
+> - Security: Aligned with knowledge
+> - Deployment: Aligned with knowledge
+> 
+> **Next Action:** Please summarize/compress the chat to proceed to /tangram:setup.
+
+**Guardrails**
+- **User Preference Overrides All**: If the user wants a "non-standard" pattern, support it. Do not "correct" the user with industry standards.
+- **Traceability**: Always cite the specific user knowledge file that influenced a decision.
+- **Strict Loop**: You must strictly follow the Suggest -> Approve -> Summarize -> Confirm loop.
+'''
