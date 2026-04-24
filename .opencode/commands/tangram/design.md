@@ -1,13 +1,15 @@
-description = "Architect or update the solution across 6 pillars, prioritizing User Prompt, Project Knowledge, and Project Studies over AI defaults."
+---
+description: "Architect or update the solution across 6 pillars, prioritizing User Prompt, Project Knowledge, and Project Studies over AI defaults."
+agent: build
+---
 
-prompt = '''
 Architect or update the technical blueprint across 6 core pillars.
 
 **Input**: Triggered by /tangram:design. User preferences in the current prompt take absolute precedence over all other data sources.
 
 **Hierarchy of Truth (The Supreme Law)**
 1. **The User Prompt**: Any instruction given in the current message overrides everything.
-2. **User Project Knowledge**: Rules found in .gemini/knowledge/** take second priority.
+2. **User Project Knowledge**: Rules found in .opencode/context/** take second priority.
 3. **Project Context**: Findings from Phase I located in tangram/studies/** (requirements, backlog, goals) dictate the architectural needs.
 4. **Internal AI Knowledge**: General industry patterns are used ONLY as a fallback if the above are silent.
 
@@ -16,23 +18,23 @@ Architect or update the technical blueprint across 6 core pillars.
 1. **Check State & Knowledge Scan**
    - Check tangram/design/ to determine if this is **Creation** or **Update** mode.
    - **Context Scan**: You MUST read tangram/studies/** (specifically business-requirements.md and feature-backlog.md) to understand exactly what the application needs to achieve before designing the stack.
-   - **Knowledge Scan**: For each of the 6 pillars, you MUST scan the corresponding .gemini/knowledge/ subdirectories (e.g., knowledge/tech-stack/**, knowledge/ui/**, etc.). 
+   - **Knowledge Scan**: For each of the 6 pillars, you MUST scan the corresponding .opencode/context/ subdirectories (e.g., context/tech-stack/**, context/ui/**, etc.).
    - If a conflict exists between these files or internal AI training, you **MUST** follow the user's files.
 
 2. **Analyze the Change**
-   If in **Update Mode**, acknowledge the specific modification. If a user instruction contradicts an established House Rule in /knowledge/, point it out and ask: "This change overrides our established standard in /knowledge/. Should I proceed?"
+   If in **Update Mode**, acknowledge the specific modification. If a user instruction contradicts an established House Rule in /context/, point it out and ask: "This change overrides our established standard in /context/. Should I proceed?"
 
 3. **Develop/Modify the 6 Pillars (User-First Logic)**
    Draft or update the following files in tangram/design/, strictly following the Hierarchy of Truth:
    - **Architecture (architecture.md)**: System flow and structural logic designed to meet the studies/goal.md.
-   - **Tech-Stack (stack.md)**: Finalize tools via knowledge/tech-stack/** that can support the studies/feature-backlog.md.
-   - **UI (ui.md)**: Merge designs with patterns in knowledge/ui/**. This is only necessary if the project needs a UI.
+   - **Tech-Stack (stack.md)**: Finalize tools via context/tech-stack/** that can support the studies/feature-backlog.md.
+   - **UI (ui.md)**: Merge designs with patterns in context/ui/**. This is only necessary if the project needs a UI.
    - **File Structure (structure.md)**: Establish folder hierarchy based on the stack.
-   - **Security (security.md)**: Auth and RBAC via knowledge/security/** to protect data outlined in the studies.
+   - **Security (security.md)**: Auth and RBAC via context/security/** to protect data outlined in the studies.
    - **Deployment (deployment.md)**: Hosting/CI/CD via knowledge/deployment/**.
 
 4. **Suggest the Draft**
-   Present the 6-pillar blueprint (or a Diff if updating). 
+   Present the 6-pillar blueprint (or a Diff if updating).
    **Traceability**: Explicitly cite which user knowledge files, studies, or prompt instructions influenced the design.
 
 5. **Wait for Approval**
@@ -44,7 +46,7 @@ Architect or update the technical blueprint across 6 core pillars.
 
 7. **Final Handover & Context Compression**
    Announce: "Design phase complete. Decisions are now localized to the file system."
-   
+
    **REQUIRED PROMPT**: You MUST ask the user to "compress" or "summarize" the current chat context. Explain that since all decisions are now captured in the files, clearing the chat history will optimize performance for the **Construction** phase.
 
 8. **Confirm Next Step**
@@ -53,10 +55,10 @@ Architect or update the technical blueprint across 6 core pillars.
 **Output On Success**
 
 > ## Design Phase Complete
-> 
+>
 > **Status:** 6 Pillars locked and localized.
-> **Source of Truth:** .gemini/knowledge/ & tangram/studies/
-> 
+> **Source of Truth:** .opencode/context/ & tangram/studies/
+>
 > **Pillars Updated:**
 > - Architecture: Documented
 > - Tech-Stack: Aligned with knowledge
@@ -64,7 +66,7 @@ Architect or update the technical blueprint across 6 core pillars.
 > - Structure: Documented
 > - Security: Aligned with knowledge
 > - Deployment: Aligned with knowledge
-> 
+>
 > **Next Action:** Please summarize/compress the chat to proceed to /tangram:setup.
 
 **Guardrails**
@@ -72,4 +74,3 @@ Architect or update the technical blueprint across 6 core pillars.
 - **User Preference Overrides All**: If the user wants a "non-standard" pattern, support it. Do not "correct" the user with industry standards.
 - **Traceability**: Always cite the specific user knowledge file or study that influenced a decision.
 - **Strict Loop**: You must strictly follow the Suggest -> Approve -> Summarize -> Confirm loop.
-'''
