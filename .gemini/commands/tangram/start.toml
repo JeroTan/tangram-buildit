@@ -35,13 +35,15 @@ Your goal is to welcome the user, explain the system, or immediately fast-track 
 > ### The Playbook
 > **Phase I: Preconstruct (The Architect)**
 > - /tangram:define - Establish your core vision.
+> - /tangram:constitution - Establish non-negotiable project rules.
 > - /tangram:explore-* - Deep dive into feasibility, legacy, and requirements.
 > - /tangram:design - Lock in your 6 technical pillars.
+> - /tangram:setup - Generate project folders and configs.
 > 
 > **Phase II: Construction (The Builder)**
-> - /tangram:setup - Generate project folders and configs.
+> - /tangram:agenda - Validate requirements before planning.
 > - /tangram:plan - Break down features into atomic tasks.
-> - /tangram:execute - Write code via subagent loops.
+> - /tangram:execute - Write tests and code via strict TDD loops.
 > - /tangram:debug & :complete - Fix issues and archive work.
 > 
 > **Phase III: Maintain (The Manager)**

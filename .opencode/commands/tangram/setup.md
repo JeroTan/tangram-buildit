@@ -14,44 +14,50 @@ Initialize the project environment and generate the base file structure using a 
 
 **Steps**
 
-1. **Tool-First Discovery & Online Research (The "Headstart" Scan)**
+1. **Pre-execution Dynamic State Check (Safety Net)**
+   - Read the core technology stack from `tangram/design/stack.md`.
+   - Run system commands to verify required tools based on the stack (e.g., `node -v`, `python --version`, `git status`).
+   - If a required tool is missing, **STOP** and alert the user to install it before proceeding.
+   - Dynamically create essential ignore files (e.g., `.gitignore`, `.dockerignore`, `.eslintignore`) based on the detected tech stack.
+
+2. **Tool-First Discovery & Online Research (The "Headstart" Scan)**
    - Identify the core technology stack from `tangram/design/stack.md`.
    - **Research Phase**: Search specifically for "Getting Started" CLI commands, official "Headstart" scripts, or "Component Initialization" tools (e.g., `npx create-next-app`, `npm init`, `shadcn-ui init`, `python -m venv`, `cargo init`).
    - Determine if there is a modern, community-recommended shortcut to automate the environment and foundational folder creation.
 
-2. **Deep Knowledge Scan & Synthesis**
+3. **Deep Knowledge Scan & Synthesis**
    - Read `tangram/design/structure.md`.
    - Check `.opencode/context/setup/**` for internal boilerplate standards that must be applied *after* the initial tool-driven setup.
 
-3. **Safety Scan (No Blind Overwrites)**
+4. **Safety Scan (No Blind Overwrites)**
    - Scan the root directory. If folders already exist:
    - Use **AskUserQuestion**: "Existing project structure detected. Should I (A) Only add missing folders/files or (B) Perform a clean reset (WARNING: Data loss)?"
    - **STOP**: Wait for user response.
 
-4. **Streamlined Execution (CLI-Driven)**
+5. **Streamlined Execution (CLI-Driven)**
    - Propose the specific "Getting Started" or "Headstart" command found in Step 1.
    - Execute the command to generate the foundational environment, configuration files (`package.json`, `requirements.txt`), and base dependencies.
 
-5. **Manual Orchestration & Augmentation**
+6. **Manual Orchestration & Augmentation**
    - Once the standard CLI/Headstart setup is complete, "orchestrate from scratch" any remaining custom folders or files (like the `tangram/` hierarchy) that the automated tools did not create.
    - Ensure the `tangram/features/` directory is correctly initialized.
 
-6. **Boilerplate & Config Refinement**
+7. **Boilerplate & Config Refinement**
    - Generate "Foundation Files" using specific logic found in `context/setup/**`:
    - **Standard Configs**: Merge or update generated configs (e.g., `tsconfig.json`, `Dockerfile`, `.gitignore`) with Tangram-specific rules.
    - **Environment**: Create `.env.example` with standard keys.
 
-7. **Tooling & Environment Check**
+8. **Tooling & Environment Check**
    - Verify that required runtimes (e.g., Node.js, Docker, Python) are correctly configured and recognized by the system. If not, please ask to install the environment yourself or the person.
 
-8. **Wait for Approval**
+9. **Wait for Approval**
    - Display the resulting directory tree and list the CLI tools and templates applied.
    - Ask: "The project skeleton is ready via [Command Name]. Should I finalize the creation and install any remaining dependencies?"
    - **STOP**: Wait for user response.
 
-9. **Finalize & Dependency Sync**
-   - Execute any final file writes.
-   - Run the final package manager commands (e.g., `npm install`, `pip install`, `yarn install`, `cargo build`) to ensure the environment is fully locked and ready.
+10. **Finalize & Dependency Sync**
+    - Execute any final file writes.
+    - Run the final package manager commands (e.g., `npm install`, `pip install`, `yarn install`, `cargo build`) to ensure the environment is fully locked and ready.
 
 **Output On Success**
 
