@@ -11,7 +11,8 @@ Architect or update the technical blueprint across 6 core pillars.
 1. **The User Prompt**: Any instruction given in the current message overrides everything.
 2. **User Project Knowledge**: Rules found in .opencode/context/** take second priority.
 3. **Project Context**: Findings from Phase I located in tangram/studies/** (requirements, backlog, goals) dictate the architectural needs.
-4. **Internal AI Knowledge**: General industry patterns are used ONLY as a fallback if the above are silent.
+4. **Internet Research**: Latest documentation, community best practices, and release notes from the internet via `google_web_search`.
+5. **Internal AI Knowledge**: General industry patterns are used ONLY as a fallback if the above are silent.
 
 **Steps**
 
@@ -21,10 +22,15 @@ Architect or update the technical blueprint across 6 core pillars.
    - **Knowledge Scan**: For each of the 6 pillars, you MUST scan the corresponding .opencode/context/ subdirectories (e.g., context/tech-stack/**, context/ui/**, etc.).
    - If a conflict exists between these files or internal AI training, you **MUST** follow the user's files.
 
-2. **Analyze the Change**
+2. **Internet Research & Augmentation**
+   - Use `google_web_search` to find the latest documentation, security advisories, and performance benchmarks for the technologies identified in the Knowledge Scan or suggested by the Project Context.
+   - Focus on breaking changes or "LTS" (Long Term Support) recommendations to ensure the design is future-proof.
+   - If the user's knowledge files are outdated compared to the latest stable releases found online, note this as a "Recommendation" in your draft, but prioritize the user's files unless they ask for the update.
+
+3. **Analyze the Change**
    If in **Update Mode**, acknowledge the specific modification. If a user instruction contradicts an established House Rule in /context/, point it out and ask: "This change overrides our established standard in /context/. Should I proceed?"
 
-3. **Develop/Modify the 6 Pillars (User-First Logic)**
+4. **Develop/Modify the 6 Pillars (User-First Logic)**
    Draft or update the following files in tangram/design/, strictly following the Hierarchy of Truth:
    - **Architecture (architecture.md)**: System flow and structural logic designed to meet the studies/goal.md.
    - **Tech-Stack (stack.md)**: Finalize tools via context/tech-stack/** that can support the studies/feature-backlog.md.
@@ -33,23 +39,23 @@ Architect or update the technical blueprint across 6 core pillars.
    - **Security (security.md)**: Auth and RBAC via context/security/** to protect data outlined in the studies.
    - **Deployment (deployment.md)**: Hosting/CI/CD via knowledge/deployment/**.
 
-4. **Suggest the Draft**
+5. **Suggest the Draft**
    Present the 6-pillar blueprint (or a Diff if updating).
    **Traceability**: Explicitly cite which user knowledge files, studies, or prompt instructions influenced the design.
 
-5. **Wait for Approval**
+6. **Wait for Approval**
    Ask: "Does this design accurately reflect your specific project standards, or should we adjust a pillar?"
    **STOP**: Wait for user response.
 
-6. **Summarize and Write**
+7. **Summarize and Write**
    Once approved, write/overwrite the finalized content in tangram/design/. Do not delete unchanged files.
 
-7. **Final Handover & Context Compression**
+8. **Final Handover & Context Compression**
    Announce: "Design phase complete. Decisions are now localized to the file system."
 
    **REQUIRED PROMPT**: You MUST ask the user to "compress" or "summarize" the current chat context. Explain that since all decisions are now captured in the files, clearing the chat history will optimize performance for the **Construction** phase.
 
-8. **Confirm Next Step**
+9. **Confirm Next Step**
    Inform the user: "Once context is compressed, we are ready for /tangram:setup."
 
 **Output On Success**
