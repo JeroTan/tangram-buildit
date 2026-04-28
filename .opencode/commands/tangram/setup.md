@@ -74,7 +74,7 @@ Initialize the project environment and generate the base file structure using a 
 > - Dependency Skeletons & .env.example
 > - All base dependencies installed successfully
 >
-> **Next Action:** Your workspace is ready. You can now run `/tangram:plan` to start the first sprint.
+> **Next Action:** Your workspace is ready. Run `/tangram:agenda` to define the requirements for your first feature.
 
 **Guardrails**
 - **Priority**: Always prefer an official "Getting Started" CLI or "Headstart" script over manual folder creation.

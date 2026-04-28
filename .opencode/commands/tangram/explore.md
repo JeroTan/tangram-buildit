@@ -45,12 +45,16 @@ Your goal is to populate the tangram/studies/ directory with six distinct files:
    Once the user approves (or provides corrections), write the finalized content into their respective files within the tangram/studies/ directory.
    Announce that the files have been successfully created.
 
-5. **Confirm Next Step**
-   Inform the user of their options:
-   "Exploration complete! You can now move forward by typing /tangram:design to establish our tech stack and architecture.
-   Alternatively, if you want to deep-dive and enhance any of these specific areas, you can use our targeted skills (e.g., /tangram:explore-monetization, /tangram:explore-backlog)."
+**Output On Success**
 
-**Guardrails**
-- **Do Not Hallucinate Final Requirements:** Only suggest business requirements that logically align with overview.md. Use the Feature Backlog to capture "nice-to-have" or logically assumed features without forcing them into the strict requirements.
+> ## Exploration Phase Complete
+>
+> **Studies Created:** feasibility.md, goal.md, business-requirements.md, feature-backlog.md, legacy.md, monetization.md.
+>
+> **Next Action:** Run `/tangram:design` to establish the technical architecture and tech stack based on these studies.
+>
+> *Alternatively, if you want to deep-dive and enhance any of these specific areas, you can use our targeted skills (e.g., `/tangram:explore-feature-backlog`, `/tangram:explore-monetization`, `/tangram:explore-requirements`, `/tangram:explore-feasibility`, `/tangram:explore-goal`, or `/tangram:explore-legacy`).*
+
+**Guardrails**- **Do Not Hallucinate Final Requirements:** Only suggest business requirements that logically align with overview.md. Use the Feature Backlog to capture "nice-to-have" or logically assumed features without forcing them into the strict requirements.
 - **Keep Tech Out:** Do not make final decisions on frameworks, databases, or specific payment APIs (like Stripe vs. PayPal) here; save that for the design phase.
 - **Strict Loop:** You must strictly follow the Suggest -> Approve -> Summarize -> Confirm loop. Do not write the files until the user approves the draft.

@@ -5,10 +5,10 @@ agent: build
 
 Architect or update the technical blueprint across 6 core pillars.
 
-**Input**: Triggered by /tangram:design. User preferences in the current prompt take absolute precedence over all other data sources.
+**Input**: Triggered by /tangram:design. User preferences in the current prompt (including brand markdowns, color formats, and platform targets like Web, Desktop, CLI, or Mobile) take absolute precedence over all other data sources.
 
 **Hierarchy of Truth (The Supreme Law)**
-1. **The User Prompt**: Any instruction given in the current message overrides everything.
+1. **The User Prompt**: Any instruction, brand markdown, or platform preference given in the current message overrides everything.
 2. **User Project Knowledge**: Rules found in .opencode/context/** take second priority.
 3. **Project Context**: Findings from Phase I located in tangram/studies/** (requirements, backlog, goals) dictate the architectural needs.
 4. **Internet Research**: Latest documentation, community best practices, and release notes from the internet.
@@ -23,7 +23,7 @@ Architect or update the technical blueprint across 6 core pillars.
    - *Requirement*: You MUST finish reading these files before proceeding to Step 2.
 
 2. **Step 2: Targeted Internet Research**
-   - **Once the Knowledge Scan is complete**, use `google_web_search` to find the latest documentation, security advisories, or performance benchmarks for the specific technologies identified in Step 1.
+   - **Once the Knowledge Scan is complete**, use `google_web_search` to find the latest documentation, security advisories, or platform-specific best practices (e.g., "Human Interface Guidelines" for Desktop/Mobile or "CLI UX" for terminal apps) for the technologies identified in Step 1.
    - Focus on breaking changes or "LTS" (Long Term Support) recommendations to ensure the design is future-proof.
    - *Requirement*: If the user's knowledge files are outdated compared to the latest stable releases found online, note this as a "Recommendation" but prioritize the user's files unless they ask for the update.
 
@@ -34,27 +34,33 @@ Architect or update the technical blueprint across 6 core pillars.
    Draft or update the following files in tangram/design/, strictly following the Hierarchy of Truth:
    - **Architecture (architecture.md)**
    - **Tech-Stack (stack.md)**
-   - **UI (ui.md)**
+   - **UI (ui.md)**: Align with user brand markdowns, color formats, and target platform (Web, Desktop, CLI, Mobile).
    - **File Structure (structure.md)**
    - **Security (security.md)**
    - **Deployment (deployment.md)**
 
 5. **Step 5: Suggest the Draft & Traceability**
-   Present the 6-pillar blueprint. Explicitly cite which user knowledge files, studies, or prompt instructions influenced each design decision.
+   Present the 6-pillar blueprint. Explicitly cite which user knowledge files, studies, or prompt instructions (including brand/color preferences) influenced each design decision.
 
 6. **Step 6: Wait for Approval**
-   Ask: "Does this design accurately reflect your specific project standards, or should we adjust a pillar?"
+   Ask: "Does this design accurately reflect your specific project standards, brand vision, and target platform, or should we adjust a pillar?"
    **STOP**: Wait for user response.
 
-7. **Step 7: Summarize and Write**
+7. **Summarize and Write**
    Once approved, write/overwrite the finalized content in tangram/design/.
 
-8. **Step 8: Final Handover & Context Compression**
-   Announce: "Design phase complete." 
+8. **Final Handover & Context Compression**
+   Announce: "Design phase complete."
    **REQUIRED PROMPT**: Ask the user to "compress" or "summarize" the current chat context to optimize performance for the **Construction** phase.
 
-9. **Step 9: Confirm Next Step**
-   Inform the user: "Ready for /tangram:setup."
+**Output On Success**
+
+> ## Technical Design Complete
+>
+> **Pillars Established:** Architecture, Stack, UI, Structure, Security, Deployment.
+> **Alignment:** Cites specific studies and project knowledge rules.
+>
+> **Next Action:** Run `/tangram:setup` to initialize the project environment and folder hierarchy.
 
 **Guardrails**
 - **Sequential Execution**: Do not attempt to search the internet until the internal Knowledge Scan is finished.

@@ -65,7 +65,7 @@ Your goal is to transform the plan.md of an active feature into functional, veri
 > - [Path/to/file1]
 > - [Path/to/file2]
 > 
-> **Status:** Verification pending user review. Ready for next batch or /tangram:debug.
+> **Next Action:** Ready for the next batch, `/tangram:debug` if issues arise, or `/tangram:complete` if the feature is finished.
 
 **Guardrails**
 - **No Ghost Code**: Never write code that isn't defined in the plan.md.

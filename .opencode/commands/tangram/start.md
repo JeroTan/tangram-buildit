@@ -51,7 +51,7 @@ Your goal is to welcome the user, explain the system, or immediately fast-track 
 > **Phase III: Maintain (The Manager)**
 > - /tangram:commit, :align, :conditioning, :revert - Version control and safety.
 >
-> **Next Action:** To begin, tell me what we are building today.
+> **Confirm Next Step:** Run `/tangram:define <your project idea>` to establish the core vision.
 
 **Guardrails**
 - Seamless Transition: If an idea is provided, do not force the user to type /tangram:define again. Just do it for them.

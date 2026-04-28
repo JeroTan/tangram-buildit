@@ -28,8 +28,14 @@ Your goal is to guide the user in generating or updating tangram/overview.md, wh
    Once the user approves (or after applying their requested adjustments), write the final content to tangram/overview.md.
    Announce that the file has been successfully created or updated.
 
-5. **Confirm Next Step**
-   Ask the user if they are ready to move on to the next command: /tangram:explore.
+**Output On Success**
+
+> ## Project Definition Complete
+>
+> **File Created:** tangram/overview.md
+> **Vision:** [App Name] core concept established.
+>
+> **Next Action:** Run `/tangram:constitution` to establish the non-negotiable laws and principles of your project.
 
 **Draft Template for tangram/overview.md**
 

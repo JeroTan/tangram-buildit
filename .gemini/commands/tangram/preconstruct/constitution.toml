@@ -29,6 +29,15 @@ Your goal is to define the non-negotiable "laws" of the project that govern arch
    - Ask for approval or modifications.
    - Once approved, write the file to `tangram/constitution.md`.
 
+**Output On Success**
+
+> ## Project Constitution Established
+> 
+> **File:** tangram/constitution.md
+> **Version:** [Version]
+> 
+> **Next Action:** Run `/tangram:explore` to expand the core concept into feasibility, goals, and business requirements.
+
 **Formatting Template (MANDATORY)**
 
 ```markdown
